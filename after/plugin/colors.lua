@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
-	color = color or "vague"
-    vim.cmd("colorscheme vague")
+	color = color 
+    -- vim.cmd("colorscheme vague")
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" }) 
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" }) 

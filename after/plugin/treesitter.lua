@@ -1,21 +1,27 @@
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "lua", "luadoc", "vim", "vimdoc", "glimmer_javascript", "typescript", "query", "markdown", "markdown_inline" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
+require("nvim-treesitter.configs").setup {
+  -- List of parser names, or "all" (the listed parsers must always be installed)
+  ensure_installed = {
+  "c",
+  "lua",
+  "luadoc",
+  "vim",
+  "vimdoc",
+  "glimmer_javascript",
+  "typescript",
+  "query",
+  "markdown",
+  "markdown_inline" 
+},
+  -- Parsers are installed asynchronously by default, to avoid blocking
   sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  -- Enable auto-installation for missing parsers when opening buffers
+  -- Recommended: set to false if you haven't installed the `tree-sitter` CLI
   auto_install = true,
-
   highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
+    enable = true, -- Enable syntax highlighting via Treesitter
+    -- Additional regex-based highlighting (may cause performance issues)
     additional_vim_regex_highlighting = false,
+    -- Disable Treesitter highlighting in help buffers for performance
     disable = "help"
   },
 }

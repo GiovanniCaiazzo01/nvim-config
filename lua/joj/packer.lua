@@ -23,17 +23,17 @@ return require('packer').startup(function(use)
   -- The `config` function runs after the plugin loads and sets the colorscheme.
   -- use "olimorris/onedarkpro.nvim"
 
-   -- Aggiungi vague.nvim
-  use {
-    'vague-theme/vague.nvim',
-    -- caricalo subito se è il tema principale
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('vague').setup()
-      vim.cmd('colorscheme vague')
-    end,
-  }
+   -- Colorscheme vague.nvim
+  -- use {
+  --   'vague-theme/vague.nvim',
+  --   -- caricalo subito se è il tema principale
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('vague').setup()
+  --     vim.cmd('colorscheme vague')
+  --   end,
+  -- }
 
   -- somewhere in your config:
 
@@ -61,10 +61,6 @@ return require('packer').startup(function(use)
 
   -- Fugitive: powerful Git integration (:Git, :Gdiffsplit, etc.).
   use('tpope/vim-fugitive')
-
-  -- Zen mode: for text centeing
-  use("folke/zen-mode.nvim")
-
 
   -- LSP-zero v4 and its dependencies:
   -- A convenience layer to quickly set up LSP, completion, snippets, and autopairs.

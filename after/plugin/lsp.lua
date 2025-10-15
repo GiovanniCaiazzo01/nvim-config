@@ -1,25 +1,23 @@
--- lua/joj/lsp.lua
--- Config LSP-zero v4 per JS/TS + React/Next
 local lsp_zero = require('lsp-zero')
 
--- Mason: installa/gestisce i server
+-- Setup Mason (LSP manager)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-    ' typescript-language-server',     -- TypeScript / JavaScript
-    'eslint',       -- ESLint diagnostics
-    'tailwindcss',  -- Tailwind CSS
-    'html',         -- HTML
-    'cssls',        -- CSS
-    'jsonls',       -- JSON
-    'emmet_ls',     -- Emmet
+    'ts_ls',         -- TypeScript/JavaScript LSP
+    'eslint',        -- ESLint diagnostics
+    'tailwindcss',   -- Tailwind CSS LSP
+    'html',          -- HTML LSP
+    'cssls',         -- CSS LSP
+    'jsonls',        -- JSON LSP
+    'emmet_ls',      -- Emmet LSP
   },
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({})
     end,
 
-    -- Typescript: attivo inlay hints utili
+    -- Typescript custom options (inlay hints, etc.)
     tsserver = function()
       require('lspconfig').tsserver.setup({
         settings = {
@@ -47,7 +45,7 @@ require('mason-lspconfig').setup({
       })
     end,
 
-    -- ESLint: ok per monorepo
+    -- ESLint custom working directory
     eslint = function()
       require('lspconfig').eslint.setup({
         settings = {
@@ -58,10 +56,10 @@ require('mason-lspconfig').setup({
   }
 })
 
--- Collega LSP a lsp-zero per cmp ecc.
+-- Extend LSP config for nvim-cmp
 lsp_zero.extend_lspconfig()
 
--- Keymap comode quando lsp si attacca al buffer
+-- Keymaps when LSP attaches to buffer
 lsp_zero.on_attach(function(client, bufnr)
   local map = function(mode, lhs, rhs, desc)
     vim.keymap.set(mode, lhs, rhs, {buffer = bufnr, desc = desc})
@@ -79,7 +77,7 @@ lsp_zero.on_attach(function(client, bufnr)
   map('n', '<leader>e', vim.diagnostic.open_float,     'Line diagnostics')
   map('n', '<leader>f', function() vim.lsp.buf.format({async=false}) end, 'Format')
 
-  -- Inlay hints (API compatibile con Neovim 0.11)
+  -- Inlay hints for Neovim 0.11+
   if vim.lsp.inlay_hint and vim.lsp.inlay_hint.enable then
     pcall(vim.lsp.inlay_hint.enable, true, {bufnr = bufnr})
   elseif type(vim.lsp.inlay_hint) == 'function' then
@@ -87,7 +85,7 @@ lsp_zero.on_attach(function(client, bufnr)
   end
 end)
 
--- nvim-cmp (completion)
+-- nvim-cmp (completion engine)
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -119,7 +117,7 @@ cmp.setup({
   completion = { completeopt = 'menu,menuone,noinsert' },
 })
 
--- Integrazione autopairs
+-- Autopairs integration
 local ok_pairs, cmp_autopairs = pcall(function()
   return require('nvim-autopairs.completion.cmp')
 end)
@@ -127,7 +125,7 @@ if ok_pairs then
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
--- Aspetto diagnostiche
+-- Diagnostic display options
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -135,4 +133,3 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
-
