@@ -24,18 +24,15 @@ return require('packer').startup(function(use)
   -- use "olimorris/onedarkpro.nvim"
 
    -- Colorscheme vague.nvim
-  -- use {
-  --   'vague-theme/vague.nvim',
-  --   -- caricalo subito se è il tema principale
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('vague').setup()
-  --     vim.cmd('colorscheme vague')
-  --   end,
-  -- }
-
-  -- somewhere in your config:
+  use {
+    'vague-theme/vague.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('vague').setup()
+      vim.cmd('colorscheme vague')
+    end,
+  }
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
   -- The `run = ':TSUpdate'` step ensures parsers are kept up to date after install/update.
