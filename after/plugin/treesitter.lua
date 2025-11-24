@@ -11,7 +11,6 @@ require("nvim-treesitter.configs").setup {
   "query",
   "markdown",
   "markdown_inline",
-  "go"
 },
   -- Parsers are installed asynchronously by default, to avoid blocking
   sync_install = false,

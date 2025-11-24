@@ -11,7 +11,6 @@ require('mason-lspconfig').setup({
     'cssls',         -- CSS LSP
     'jsonls',        -- JSON LSP
     'emmet_ls',      -- Emmet LSP
-    'gopls',         -- GO LSP 
   },
   handlers = {
     function(server_name)
