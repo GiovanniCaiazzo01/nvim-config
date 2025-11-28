@@ -3,7 +3,6 @@
 -- from your init.vim (or require it from init.lua).
 -- It defines and installs plugins using packer.nvim.
 
-
 -- Start Packer and declare plugins.
 -- The `use` function accepts either a string (repo path) or a table with options.
 return require('packer').startup(function(use)
@@ -11,19 +10,12 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- Fuzzy finder: Telescope (pinning to tag 0.1.8 for stability).
-  -- It depends on plenary.nvim (utility library), declared in `requires`.
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
-    -- or , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  -- Colorscheme: rose-pine.
-  -- `as = 'rose-pine'` sets an alias so you can refer to it by that name.
-  -- The `config` function runs after the plugin loads and sets the colorscheme.
-  -- use "olimorris/onedarkpro.nvim"
-
-   -- Colorscheme vague.nvim
+  -- Colorscheme vague.nvim
   use {
     'vague-theme/vague.nvim',
     lazy = false,
@@ -35,19 +27,12 @@ return require('packer').startup(function(use)
   }
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
-  -- The `run = ':TSUpdate'` step ensures parsers are kept up to date after install/update.
-  --
-  -- NOTE: The usual Packer style is a single table, like:
-  --   use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-  -- Your two-argument form often still works, but the table form is recommended.
   use(
     'nvim-treesitter/nvim-treesitter',
     { run = ':TSUpdate' }
   )
 
   -- Plenary again (utility functions used by many plugins).
-  -- You already require it for Telescope; declaring it explicitly is harmless
-  -- and can be useful if you use Plenary directly in your config.
   use('nvim-lua/plenary.nvim')
 
   -- Harpoon: quick file marking and rapid navigation between files.
@@ -60,26 +45,25 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
 
   -- LSP-zero v4 and its dependencies:
-  -- A convenience layer to quickly set up LSP, completion, snippets, and autopairs.
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v4.x',
     requires = {
       -- Core LSP support
-      { 'neovim/nvim-lspconfig' },          -- Configure built-in LSP client
-      { 'williamboman/mason.nvim' },        -- Installer/manager for LSP/DAP/formatters
-      { 'williamboman/mason-lspconfig.nvim' }, -- Bridge Mason <-> lspconfig
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },       -- Completion engine
-      { 'hrsh7th/cmp-nvim-lsp' },   -- LSP completion source
-      { 'hrsh7th/cmp-path' },       -- Path completion
-      { 'hrsh7th/cmp-buffer' },     -- Buffer words completion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-buffer' },
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },       -- Snippet engine
-      { 'saadparwaiz1/cmp_luasnip' }, -- LuaSnip source for nvim-cmp
-      { 'rafamadriz/friendly-snippets' }, -- A big collection of ready-made snippets
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'rafamadriz/friendly-snippets' },
 
       -- Autopairs: auto-close brackets/quotes, integrates with completion
       { 'windwp/nvim-autopairs' },

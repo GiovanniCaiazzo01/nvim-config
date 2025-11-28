@@ -33,7 +33,8 @@ function FixMyEditor()
   -- Additional UI tuning for signcolumn width (commented out)
   -- vim.opt.signcolumn = "yes:9" -- wider sign column for lots of signs (approx 12 characters margin)
   -- For Neovim >= 0.9, you can show only signs without line numbers/folds
-
+  --
+  -- init.lua
 end
 
 FixMyEditor()
