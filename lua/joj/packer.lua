@@ -15,16 +15,11 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
+  -- BUFFERLINE (AGGIUNGI QUESTO BLOCCO COMPLETO)
+  use 'nvim-tree/nvim-web-devicons' 
+
   -- Colorscheme vague.nvim
-  use {
-    'vague-theme/vague.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require('vague').setup()
-      vim.cmd('colorscheme vague')
-    end,
-  }
+  use 'Mofiqul/vscode.nvim'
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
   use(
