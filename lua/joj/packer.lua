@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
   -- BUFFERLINE (AGGIUNGI QUESTO BLOCCO COMPLETO)
   use 'nvim-tree/nvim-web-devicons' 
 
-  -- Colorscheme vague.nvim
+  -- Colorscheme vscode.nvim
   use 'Mofiqul/vscode.nvim'
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
