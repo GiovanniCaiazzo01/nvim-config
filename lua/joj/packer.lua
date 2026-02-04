@@ -15,8 +15,8 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  -- BUFFERLINE (AGGIUNGI QUESTO BLOCCO COMPLETO)
-  use 'nvim-tree/nvim-web-devicons' 
+  -- BUFFERLINE 
+  -- use 'nvim-tree/nvim-web-devicons' 
 
   -- Colorscheme vscode.nvim
   use 'Mofiqul/vscode.nvim'
@@ -61,9 +61,15 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
 
       -- Autopairs: auto-close brackets/quotes, integrates with completion
-      { 'windwp/nvim-autopairs' },
+      { 'windwp/nvim-autopairs',
+      event = 'InsertEnter',
+      config = function()
+        require('nvim-autopairs').setup({
+          check_ts = true,  -- se usi treesitter
+        })
+      end,
+    },
     }
   }
-
 end)
 
