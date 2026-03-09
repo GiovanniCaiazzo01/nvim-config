@@ -19,7 +19,8 @@ return require('packer').startup(function(use)
   -- use 'nvim-tree/nvim-web-devicons' 
 
   -- Colorscheme vscode.nvim
-  use 'Mofiqul/vscode.nvim'
+  -- use 'Mofiqul/vscode.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
   use(
