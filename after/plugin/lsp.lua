@@ -18,8 +18,8 @@ require('mason-lspconfig').setup({
     end,
 
     -- Typescript custom options (inlay hints, etc.)
-    tsserver = function()
-      require('lspconfig').tsserver.setup({
+    ts_ls = function()
+      require('lspconfig').ts_ls.setup({
         settings = {
           typescript = {
             inlayHints = {

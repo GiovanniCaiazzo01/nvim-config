@@ -23,10 +23,15 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Treesitter for better syntax highlighting, indentation, and code parsing.
-  use(
+  -- use(
+  --   'nvim-treesitter/nvim-treesitter',
+  --   { run = ':TSUpdate' }
+  -- )
+
+  use {
     'nvim-treesitter/nvim-treesitter',
-    { run = ':TSUpdate' }
-  )
+    run = ':TSUpdate',
+  }
 
   -- Plenary again (utility functions used by many plugins).
   use('nvim-lua/plenary.nvim')
@@ -70,7 +75,7 @@ return require('packer').startup(function(use)
         })
       end,
     },
-    }
   }
+}
 end)
 
