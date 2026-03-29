@@ -24,9 +24,9 @@ require('mason-lspconfig').setup({
           typescript = {
             inlayHints = {
               includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
               includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = false,
+              includeInlayVariableTypeHints = true,
               includeInlayFunctionLikeReturnTypeHints = true,
               includeInlayPropertyDeclarationTypeHints = true,
               includeInlayEnumMemberValueHints = true,
